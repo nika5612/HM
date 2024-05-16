@@ -12,7 +12,7 @@ from sklearn.metrics import classification_report
 def DCNN1_model():
     #CNN layer
     model = keras.Sequential()
-    model.add(keras.layer.Conv2D(64, (5,5), input_shape=(28,28,1), activation = 'relu'))
+    model.add(keras.layers.Conv2D(64, (5,5), input_shape=(28,28,1), activation = 'relu'))
     model.add(keras.layers.MaxPooling2D(pool_size=(2,2)))
     model.add(keras.layers.Dropout(0,25))
     model.add(keras.layers.Conv2D(32, (3, 3), activation= 'relu'))
@@ -21,15 +21,15 @@ def DCNN1_model():
     model.add(keras.layers.Flatten())
      
     #MLP with 3 hidden layer
-    model.add(keras.layer.Dense(375, activation = 'relu'))
+    model.add(keras.layers.Dense(375, activation = 'relu'))
     model.add(keras.layers.Dropout(0,25))
-    model.add(keras.layer.Dense(225, activation = 'relu'))
+    model.add(keras.layers.Dense(225, activation = 'relu'))
     model.add(keras.layers.Dropout(0,25))
-    model.add(keras.layer.Dense(135, activation = 'relu'))
+    model.add(keras.layers.Dense(135, activation = 'relu'))
     model.add(keras.layers.Dropout(0,25))
-    model.add(keras.layer.Dense(10, activation = 'softmax'))
+    model.add(keras.layers.Dense(10, activation = 'softmax'))
     
-    model.compile(loss= 'sparse_categorical_crossentropy', optimizer = keras.optimizer.Adam(learning_rate=0.01), metrics=['accuracy'])
+    model.compile(loss = 'sparse_categorical_crossentropy', optimizer = keras.optimizers.Adam(learning_rate=0.01), metrics=['accuracy'])
     return model
 
 
